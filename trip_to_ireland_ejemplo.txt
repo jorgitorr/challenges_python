@@ -1,0 +1,29 @@
+27
+Alejo 15D 16E
+Ana 32B 22B
+Carme 29F 23D
+Cris 10C 34A
+Dani 22F 24F
+Edu 21A 25D
+Ernes 15E 16F
+Fran 08C 30F
+Gaby 32A 22A
+Jaime 15C 16D
+Javi 09B 31C
+JesuC 26E 20D
+JesuG 08A 30D
+Joq 09A 31D
+Jorge 23E 24E
+Jose 10D 35B
+JuanC 09C 31B
+JuanM 26F 20E
+JuanP 23D 24D
+MariC 33D 23B
+MariR 29E 23F
+Migue 32C 22C
+Monic 31C 23A
+Nati 08B 30E
+Patri 31D 23C
+Ruben 21B 25E
+Sergi 10B 35C
+      

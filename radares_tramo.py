@@ -5,7 +5,7 @@ while(introduce[0] != "0" or introduce[1]!="0" or introduce[2]!="0"):
             or int(introduce[2]) < 0:
         print("ERROR")
         introduce = input().split(" ")
-
+        
     #pasamos de metros a km
     introduce[0] = int(introduce[0])/1000
     #pasamos de segundos a horas
