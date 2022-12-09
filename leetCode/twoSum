@@ -1,0 +1,17 @@
+class Solution(object):
+    def twoSum(nums, target):
+        suma = 0
+        numeros_resultados = []
+        for num in nums:
+            if suma+num == target:
+                numeros_resultados.append(num)
+                return numeros_resultados
+            elif suma+num>target:
+                return numeros_resultados    
+            suma += num
+            numeros_resultados.append(num)
+        return numeros_resultados
+
+
+    nums = [2,7,11,15]
+    print(twoSum(nums,9))

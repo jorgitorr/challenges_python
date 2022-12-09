@@ -7,10 +7,8 @@ def printTablero(tablero):
     print('--+---+--')
     print(tablero[7],'|',tablero[8],'|',tablero[9])
 
-if randint(0):
-    turno = 'x'
-else:
-    turno = '0'
+turno = 'x' if randint(0) else '0'
+
 
     
     
