@@ -21,38 +21,8 @@ def imprime(baraja):
           "|  " + baraja[0][1] + "  |" + " " + "|  " + baraja[1][1] + "  |" + " " + "|  " + baraja[2][1] + "  |\n"\
           "|____" + baraja[0][0] + "|" + " " + "|____" + baraja[1][0] + "|" + " " + "|____" + baraja[2][0] + "|")
 
-def get_jugada_cupier(jugadas):
-    return random.choice(jugadas)
 
-def intercambio_cartas(baraja):
-    '''intercambia la posición entre cartas'''
-    jugada_cupier = get_jugada_cupier(jugadas)
-
-    if jugada_cupier == 'L-R':
-        print("swapping left and right")
-        baraja[0],baraja[2] = baraja[2],baraja[0]
-    elif jugada_cupier == "L-M":
-        print("swapping left and middle")
-        baraja[0],baraja[1] = baraja[1],baraja[0] 
-    elif jugada_cupier == "M-L":
-        print("swapping middle and left")
-        baraja[1],baraja[0] = baraja[0],baraja[1]
-    elif jugada_cupier == "M-R":
-        print("swapping middle and right")
-        baraja[1],baraja[2] = baraja[2],baraja[1]
-    elif jugada_cupier == "R-L":
-        print("swapping right and left")
-        baraja[2],baraja[0] = baraja[0],baraja[2]
-    elif jugada_cupier == "R-M":
-        print("swapping right and middle")    
-        baraja[2],baraja[1] = baraja[1],baraja[2]
-
-def get_pos_usuario():
-    print("--snip--")
-    return input("Wich card has the Queen of Hearts? (LEFT MIDDLE RIGHT)\n> ").upper()
-
-def get_pos_carta(baraja):
-    pos_usuario = get_pos_usuario()
+def get_pos_carta(pos_usuario):
     '''devuelve la posicion de la carta'''
     if pos_usuario=="LEFT":
         return 0
@@ -72,7 +42,7 @@ if __name__=="__main__":
     '''variables'''
     jugadas = ["L-R","L-M","M-L","M-R","R-L","R-M"]# todas las posibles jugadas
     baraja = [("Q",CORAZONES),(get_carta_al_azar()),(get_carta_al_azar())]
-    NUMERO_CAMBIOS = 5 # numero de cambios que realiza el cupier
+    NUMERO_CAMBIOS = 5 # numero de cambios que realiza el cupier (modificable)
     DELAY = 0.2 # velocidad con la que cambia las cartas(modificable)
     '''fin de variables'''
 
@@ -84,17 +54,39 @@ if __name__=="__main__":
     imprime(baraja)
     input("Press Enter when you are ready to begin...")
     
-    while NUMERO_CAMBIOS>0:
+
+    for i in range(NUMERO_CAMBIOS):#principio de responsabilidad única (que una función haga una única cosa)
+        jugada_cupier = random.choice(jugadas)
         '''proceso en el que el cupier intercambia las cartas'''
-        intercambio_cartas(baraja)
+        if jugada_cupier == 'L-R':
+            print("swapping left and right")
+            baraja[0],baraja[2] = baraja[2],baraja[0]
+        elif jugada_cupier == "L-M":
+            print("swapping left and middle")
+            baraja[0],baraja[1] = baraja[1],baraja[0] 
+        elif jugada_cupier == "M-L":
+            print("swapping middle and left")
+            baraja[1],baraja[0] = baraja[0],baraja[1]
+        elif jugada_cupier == "M-R":
+            print("swapping middle and right")
+            baraja[1],baraja[2] = baraja[2],baraja[1]
+        elif jugada_cupier == "R-L":
+            print("swapping right and left")
+            baraja[2],baraja[0] = baraja[0],baraja[2]
+        elif jugada_cupier == "R-M":
+            print("swapping right and middle")    
+            baraja[2],baraja[1] = baraja[1],baraja[2]
         time.sleep(DELAY)
-        NUMERO_CAMBIOS -= 1
     
-    pos = get_pos_carta(baraja)#posicion de la carta introducida por el usuario
-    print(imprime(baraja))
+    print("--snip--")
+    pos = input("Wich card has the Queen of Hearts? (LEFT MIDDLE RIGHT)\n> ").upper()
+    pos_en_num = get_pos_carta(pos)
+    imprime(baraja)
 
     '''comprobacion'''
-    if es_posicion(pos) == True:
+    if es_posicion(pos_en_num) == True:
         print("You win!\nYou are the king!")
     else:
         print("You lost!\nThanks for playing, sucker!")
+
+
