@@ -1,13 +1,22 @@
 import random, time
 from random import shuffle
 
+'''constantes'''
+CORAZONES = chr(9829)
+DIAMANTES = chr(9830)
+PICAS = chr(9824)
+TREBOL = chr(9827)
+''''''
 
-def get_baraja_al_azar(numero,palo):
+def get_carta_al_azar():
+    '''tengo que comprobar que las cartas son diferentes'''
+    palo = [CORAZONES,DIAMANTES,PICAS,TREBOL] 
+    numero = "123456789JK" 
     return random.choice(str(numero)),random.choice(palo)
 
 
 def imprime(baraja):
-    return(" _____ " + " " + " _____ " + " " + " _____ \n"\
+    print(" _____ " + " " + " _____ " + " " + " _____ \n"\
           "|" + baraja[0][0] + "    |" + " " + "|" + baraja[1][0] + "    |" + " " + "|" + baraja[2][0] + "    |\n"\
           "|  " + baraja[0][1] + "  |" + " " + "|  " + baraja[1][1] + "  |" + " " + "|  " + baraja[2][1] + "  |\n"\
           "|____" + baraja[0][0] + "|" + " " + "|____" + baraja[1][0] + "|" + " " + "|____" + baraja[2][0] + "|")
@@ -61,24 +70,18 @@ def es_posicion(pos):
 
 if __name__=="__main__":
     '''variables'''
-    CORAZONES = chr(9829)
-    DIAMANTES = chr(9830)
-    PICAS = chr(9824)
-    TREBOL = chr(9827)
     jugadas = ["L-R","L-M","M-L","M-R","R-L","R-M"]# todas las posibles jugadas
-    palo = [CORAZONES,DIAMANTES,PICAS,TREBOL] 
-    numero = "123456789JK" 
-    baraja = [("Q",palo[0]),(get_baraja_al_azar(numero,palo)),(get_baraja_al_azar(numero,palo))]
+    baraja = [("Q",CORAZONES),(get_carta_al_azar()),(get_carta_al_azar())]
     NUMERO_CAMBIOS = 5 # numero de cambios que realiza el cupier
     DELAY = 0.2 # velocidad con la que cambia las cartas(modificable)
     '''fin de variables'''
 
-    get_baraja_al_azar(numero,palo)
+    get_carta_al_azar()
     shuffle(baraja) # desordena las barajas antes de imprimir por primera vez
 
     print("Three-Card Monte\n\nFind the red lady (the Queen of Hearts)! Keep an eye on how\n"\
         "the cards move.\n\nHere are the cards:")
-    print(imprime(baraja))
+    imprime(baraja)
     input("Press Enter when you are ready to begin...")
     
     while NUMERO_CAMBIOS>0:
