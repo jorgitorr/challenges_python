@@ -61,17 +61,17 @@ if __name__=="__main__":
     bet = int(input("> "))
     print("Bet:",bet)
 
-    '''primera jugada'''
+    #primera jugada
     get_baraja(baraja_cupier)
     get_baraja(baraja_cupier)#esta carta se ocultará
     get_baraja(baraja_jugador)
     get_baraja(baraja_jugador)
 
-    '''valor de las cartas del cupier y el jugador'''
+    #valor de las cartas del cupier y el jugador
     valor_cartas_cupier = get_valor_cartas(baraja_cupier,0)# 0 porque al principio A siempre vale 10
     valor_cartas_jugador = get_valor_cartas(baraja_jugador,0)
 
-    '''impresion de las cartas del dealer y player y de su valor'''
+    #impresion de las cartas del dealer y player y de su valor
     print("DEALER: ??")
     baraja_imprimir_cupier = [baraja_cupier[0],("#","#")]# nueva baraja para poder imprimir la segunda carta oculta
     imprimir(baraja_imprimir_cupier)
@@ -80,7 +80,7 @@ if __name__=="__main__":
 
 
     while money > 0:
-        '''jugada siguiente'''
+        #jugada siguiente
         print("\n(H)it, (S)tand, (D)ouble down")
         play = input("> ").upper()
 
@@ -88,19 +88,19 @@ if __name__=="__main__":
             get_baraja(baraja_jugador)
             get_baraja(baraja_cupier)
 
-            '''se suman las nuevas cartas al valor'''
+            #se suman las nuevas cartas al valor
             valor_cartas_cupier = get_valor_cartas(baraja_cupier,valor_cartas_cupier)
             valor_cartas_jugador = get_valor_cartas(baraja_jugador,valor_cartas_jugador)
             if play=="D":
                 bet = bet*2
 
-            '''imprime las cartas'''
+            #imprime las cartas
             print("DEALER:",valor_cartas_cupier)
             imprimir(baraja_cupier)
             print("\nPLAYER:",valor_cartas_jugador)
             imprimir(baraja_jugador)
 
-        '''saldrá cuando el jugador decida parar de apostar o haya perdido alguno de los dos'''
+        #saldrá cuando el jugador decida parar de apostar o haya perdido alguno de los dos
         if valor_cartas_cupier>=21 or valor_cartas_jugador>=21 or play=="S":
             if valor_cartas_jugador>21 and valor_cartas_cupier<=21 or (valor_cartas_cupier>valor_cartas_jugador and valor_cartas_cupier<=21):
                 money -= bet
