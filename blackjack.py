@@ -8,7 +8,7 @@ DIAMANTES = chr(9830)
 DELAY = 0.5
 
 def get_baraja(baraja):
-    valor = random.choice("23456789JQKA")
+    valor = random.choice(list("23456789JQKA")+['10'])
     palo = random.choice([TREBOL,CORAZONES,PICAS,DIAMANTES])
     baraja.append((valor,palo))
     return baraja
